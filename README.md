@@ -1,6 +1,6 @@
-# Atomist 'rug-functions-cloudfoudry'
+# Atomist 'rug-functions-cloudfoundry'
 
-[![Build Status](https://travis-ci.org/atomist/rug-functions-cloudfoudry.svg?branch=master)](https://travis-ci.org/atomist/rug-functions-cloudfoudry)
+[![Build Status](https://travis-ci.org/atomist/rug-functions-cloudfoundry.svg?branch=master)](https://travis-ci.org/atomist/rug-functions-cloudfoundry)
 [![Slack Status](https://join.atomist.com/badge.svg)](https://join.atomist.com)
 
 Rug Functions for CloudFoundry.
