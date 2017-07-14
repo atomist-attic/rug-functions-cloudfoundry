@@ -1,0 +1,45 @@
+dist: trusty
+sudo: false
+language: java
+jdk:
+- oraclejdk8
+branches:
+  except:
+  - /\+travis\d+$/
+env:
+  global:
+  - secure: SKErpXLg3rv0kBR1HRGCR30bxBL/AlLiS0GJZ/Nqbl7rOUEWC+L6SArECKGf3ITPQ9xzNomOuVrrLyCxvSOW08xn7AxMpZlqxjWWOZ086edrY6aY14W19Lnm63OO659COr0IFT5Skn4JnYztJnQ29AWU+IR5N0NAus9NZzxF6Pf70JttTLRn8eJEPnVDq5e1xguwhaB3WrfT5dzBeIDGYglSTYOc/Luu4SG6eZxNmroKUp4haXNhEaMy2kEGFeRzydyjpsOThO7xWbnq/bGCO/AsCq9nBl9XUCMOvRBKmGtDAV3jS7xwOldfdKWQBqCFCxFj/WopxIfk+HxH2YHURopnBF0lSYloTjw6KqyHJWnyilG64InV6aVvj+5P57HpulXlgg0zmjbUN7a2hDr9aXTRGMpv3lD79NdSRra7ZBll5AwqHxuBdxT2pGLVP/RRyMKaCbqkDVk1H8bp3uLTloe/vtUH9tAat9bHyoGThPQG7oNHWtbK8jvme1XWHGU3d26WPanvflU5ptuGRADVXzaENRGbaHoc9CvnaJTjpV7zB4giOeec83nyOCF1oXTENXr+6SfvNxt6vH8O9a6lfR6Uw+WiRidO/kHMfh1VNUbzpbiMojPRd57L+ilGGeXP2BYLyHLDTimmFOyPHE516OAJ4jLXu+DRVXWWwOw7xU8=
+  - secure: e6wUwuh2SVOKkSQ6+aDfQ9m1yFhbVPliyyzJWJgKeAairt9p3MsRUR/gGtsiEtmjUVJtugeWa7JQ/aEO42BbhrHTnSIbQ4HAwOhcJneT/E9iXEVMmGb7tKPuPudHdgdb2QWoPoXWyocW2Bo3NjBEuzv/6pd2EHkFkJtDBYw2omm3ZIz/z1iZ+8uhab/IV7akzUK3wNEH18kGAY70BuVuq+D1PZT4DLo1mjYjZ/BpmtwhBkDmI5xsjiJ2Sezn7efj3N3p2v6vJafyIvbtTu8SLKOdXETWJAtZfuB+RCOAQ1Oiu4Ud4eSpIsxvh/Z7blJkuaU2a8l98b0geUOaxmGYH+9cW2iUCtG+3owyWR4ADKAAvfOYKvv5PENF7LwKSXtoS6oeNRsbpjdyXkkPB5pXazEbnuC1qgaXIqgTcwiZ/Ngb1voLh3vfoFiNNJAOwYmSly5U2eYN8zPQKOQMaMI3dQO1HTKJV5ZJ6GaG17oemTK59qCKR4RPjvkdFV0mY9oaiMugFE153iAyEylPxnt8eQVG5wp+S177O3u6cukjoxK/BRXawHvN82ZI33ITj6UOP25CQm9siCSiySyqBVDvXZRMQmTSHuD2bj0c+MSWroKjedu/3W3ipGJ90+jDzAKF+GuXsyYiIA8veNzku3po/4G3GDBPsFAB/jqfZfxN5CM=
+  - secure: VuOdeQ9Nw9Nw86Q7otiISeW2yOIlNFgJDvMUH/+eu7mYr1Kfq6nDujvEnIbC9CTvAryHIm1115lxhhrloY4rk65t/etkFklqQeybootKef8EqRtgW0xER5r1UjZSBlNJvI4qZ2dA/rXG7pXZMF+hOThBxD6jbYvLWUzKwn3pu0pcdmXhAYOflSEJUG6hFkZzgJcoCf3NJMtLHE+M8AhTcpt7z4Py3IwuTmzMc0QtAq2tLis28i9jmlAngnhYzUDMoTM6VsYVRKjmDsLIZ/VbqVN7RlvQeLVAcGD7IpoCaPFUAiUUyseeR23KsXRqJdCk2KkKfRKWj+LrJFtEVfOE8nnyEy66D7xyPdHfahW3TEOl9wKbjHiEMvkCY38qS4vLgTVmsd0ld7WNlCur5yQG2Wdmw1GQPLg9l+CS3UtVwgGvl8MxLT79YBg5yYAGiZ8faEfZOqcyxSfZ/ZT86Vidj1spUCknlN6beGXUXnEYIcMocS6L77XWiDeiLe3T4khJKcv1TO1q4WAbKGsZJhWhTSJgZPv1/DSoz/JC0dxC3bVfz2zWr1TuN3Cla6gdp+up4GSC/eTf9g8WIsxkYOWXLcdN85KrW1/dCuX4/NS85hT66Ppl0ZiDa2985WkZwFix5b15hnM/OkbOz4SBs0Pts7VF8aJSdZeT5gA5eolQBoU=
+addons:
+  apt:
+    packages:
+    - openssl
+    - gnupg
+install: true
+script: bash src/main/scripts/travis-build.bash
+notifications:
+  email: false
+  webhooks:
+    on_success: always
+    on_failure: always
+    on_start: always
+    on_cancel: always
+    on_error: always
+    urls:
+    - https://webhook.atomist.com/travis
+cache:
+  directories:
+  - $HOME/.m2
+deploy:
+  provider: releases
+  api_key:
+    secure: o2eWCxgYYUsvN0w/msEjF14xwBH3qFUOrffhEOh1fgsDHgPO9IutJBVTtfx6LXqx+4S9bm+KjYzgL2Ko8lDzuLKBRBFZ+s7k9CIGW1lLFfA7u1nW/lUhXI25M0LZBEZ0pmjRqRWX42T+VSdugu0Thc2UAJyd/47/h5E6o2tsOnB2Tzz0/sw7hSnPESRk4jTEEUFHZ+7uXKSobKb2pwWiSFOFpiCawNPDtTV0gtucrjjtU7dn28XEQXzAkEekXOmH4QsrtKiFKOGzYMZB3nHHuali6SQ2s3Beb0VgKk5hmtixCQ2A9XD+oTWrHiQFv4PnEANepSgjg9FkZpJuWBmX4c6SPCh8IrKiWD+NgMkR4bHodIv6A56OovUiPpfBlArLdDDefa2LFbk0JA+TTTO4TmcB9DEeRTeevrjbv3Kmth/Wa2ZSaHKMgtXJ/DNillDdTN0V1gv4G29xHkfXz6TUSgbvMOV6Sh7q2G0yJ+kZeZvBXbp3CDKkaqDFAIPf1CWULLnoHf9aWdzb7+zL64G1xiBj1eOtFgINMVsNXCAaBsQQOMZ4ZXajT5nHM3YsC0j2WDnzXxCEvnNNnaQzvnXqR6jlXa7arbw7X0PiBFJGNloprXw9Ifs/GF66yNan2pab7aBJOtS/MHjFloayi6hiG3su2AU9wd9N09F5Digrxt8=
+  on:
+    tags: true
+    condition: $TRAVIS_TAG =~ ^[0-9]+\.[0-9]+\.[0-9]+$
+before_install:
+- openssl aes-256-cbc -K $encrypted_18141f40989c_key -iv $encrypted_18141f40989c_iv
+  -in atomist_sec.gpg.enc -out atomist_sec.gpg -d
+- openssl aes-256-cbc -K $encrypted_de282c3465e2_key -iv $encrypted_de282c3465e2_iv
+  -in atomist_sec.gpg.enc -out atomist_sec.gpg -d
