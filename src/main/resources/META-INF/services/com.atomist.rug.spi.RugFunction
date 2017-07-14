@@ -1,0 +1,5 @@
+com.atomist.rug.function.cf.RecentLogsFunction
+com.atomist.rug.function.cf.InfoFunction
+com.atomist.rug.function.cf.ScaleFunction
+com.atomist.rug.function.cf.StopFunction
+com.atomist.rug.function.cf.StartFunction
