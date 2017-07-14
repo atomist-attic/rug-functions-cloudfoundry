@@ -1,15 +1,19 @@
 package com.atomist.rug.function.cf
 
 import com.atomist.rug.spi.annotation.{Parameter, RugFunction, Tag}
-import com.atomist.rug.spi.{FunctionResponse, Handlers, JsonBodyOption}
+import com.atomist.rug.spi.{FunctionResponse, Handlers, Secret}
 
 class ScaleFunction extends CfFunction {
 
-  @RugFunction(name = "cf-scale", description = "Scale CloudFoundry application",
+  @RugFunction(name = "cf-scale", description = "Scale a CloudFoundry application",
     tags = Array(new Tag(name = "cloudfoundry")))
   def run(@Parameter(name = "appName") appName: String,
-         @Parameter(name = "instances") instances: Int): FunctionResponse = {
-    operations().scale(appName, instances);
+          @Parameter(name = "instances") instances: Int,
+          @Parameter(name = "organization") organization: String,
+          @Parameter(name = "space") space: String,
+          @Secret(name = "user", path = "secret://team/cloudfoundry/user") user: String,
+          @Secret(name = "password", path = "secret://team/cloudfoundry/password") password: String) : FunctionResponse = {
+    operations(user, password, organization, space).scale(appName, instances);
     FunctionResponse(Handlers.Status.Success)
   }
 }
