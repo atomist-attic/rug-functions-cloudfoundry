@@ -1,7 +1,7 @@
 package com.atomist.rug.function.cf
 
-import com.atomist.rug.spi.annotation.{Parameter, RugFunction, Tag}
-import com.atomist.rug.spi.{FunctionResponse, Handlers, Secret}
+import com.atomist.rug.spi.annotation.{Parameter, RugFunction, Tag, Secret}
+import com.atomist.rug.spi.{FunctionResponse, Handlers}
 
 class ScaleFunction extends CfFunction {
 
