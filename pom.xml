@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.atomist.rug</groupId>
     <artifactId>rug-functions-cloudfoundry</artifactId>
-    <version>0.2.1-SNAPSHOT</version>
+    <version>0.3.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>rug-functions-cloudfoundry</name>
     <description>Rug Functions for CloudFoundry</description>
